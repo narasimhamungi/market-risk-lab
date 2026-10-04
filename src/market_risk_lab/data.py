@@ -82,14 +82,18 @@ def build_returns(prices: pd.DataFrame, tickers, calendar: pd.DatetimeIndex | No
     absent = sorted(set(tickers) - set(prices["ticker"]))
     for t in absent:
         rep.add("ticker_absent", "fail", "abort", "no rows in fact_price_daily_consensus", ticker=t)
+    def _span(g):
+        return f"{g['date'].nunique()} dates, {g['date'].min().date()}..{g['date'].max().date()}"
+
     dup = prices[prices.duplicated(["date", "ticker"], keep=False)]
-    for (d, t), g in dup.groupby(["date", "ticker"]):
-        rep.add("duplicate_key", "fail", "abort", f"{len(g)} rows for one (ticker, date)", t, d)
+    for t, g in dup.groupby("ticker"):
+        rep.add("duplicate_key", "fail", "abort", f"more than one row per date on {_span(g)}", ticker=t)
     bad = prices[~(prices["adj_close"] > 0)]  # also catches NaN
-    for r in bad.itertuples():
-        rep.add("non_positive_price", "fail", "abort", f"adj_close={r.adj_close}", r.ticker, r.date)
+    for t, g in bad.groupby("ticker"):
+        rep.add("non_positive_price", "fail", "abort", f"adj_close <= 0 or null on {_span(g)}", ticker=t)
     if rep.failures():
-        raise DataValidationError(f"{len(rep.failures())} structural data failure(s): {rep.counts()}")
+        raise DataValidationError(f"{len(rep.failures())} structural data failure(s): "
+                                  + "; ".join(f"{i['check']}[{i['ticker']}] {i['detail']}" for i in rep.failures()))
 
     wide = prices.pivot(index="date", columns="ticker", values="adj_close")[tickers].sort_index()
 

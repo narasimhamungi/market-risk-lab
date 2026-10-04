@@ -44,6 +44,13 @@ def test_structural_problems_fail(wide_prices, mutate, match):
         build_returns(mutate(long_prices(wide_prices)), T3, **KW)
 
 
+def test_duplicates_are_reported_once_per_ticker(wide_prices):
+    px = long_prices(wide_prices)
+    px = pd.concat([px, px[px["ticker"].isin(["AAA", "CCC"])]])  # every date doubled for two tickers
+    with pytest.raises(DataValidationError, match=r"2 structural.*duplicate_key\[AAA\].*60 dates"):
+        build_returns(px, T3, **KW)
+
+
 def test_stale_price_fails(wide_prices):
     wide_prices.iloc[30:34, 1] = wide_prices.iloc[30, 1]  # 3 consecutive zero returns
     with pytest.raises(DataValidationError, match="stale_price"):

@@ -71,6 +71,15 @@ def test_store_rejects_rows_that_break_the_sign_convention(gold):
         conn.rollback()
 
 
+def test_superseded_security_key_is_not_read(gold):
+    """Regression: the first real run aborted on two rows per (ticker, date) for tickers
+    whose dim_security key had been superseded."""
+    from market_risk_lab.data import pull_prices
+    prices, _ = pull_prices(gold["conn"], TICKERS[:1], "2019-01-01")
+    assert not prices.duplicated(["date", "ticker"]).any() and len(prices) == gold["n_dates"]
+    assert prices["adj_close"].iloc[0] == gold["first_price"]  # the current key's price, not the stale 0.93x copy
+
+
 def test_data_layer_reads_only_requested_tickers(gold):
     from market_risk_lab.data import pull_prices
     prices, cal = pull_prices(gold["conn"], TICKERS[:3], "2020-01-01", "2020-12-31")

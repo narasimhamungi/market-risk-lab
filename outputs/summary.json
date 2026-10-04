@@ -1,0 +1,384 @@
+{
+  "generated_at": "2026-10-04T00:39:57+00:00",
+  "python": "3.14.4",
+  "risk_config": {
+    "windows": [
+      250,
+      500
+    ],
+    "alphas": [
+      0.99,
+      0.975
+    ],
+    "zero_mean": true,
+    "mc_draws": 100000,
+    "mc_seed": 20261004
+  },
+  "portfolios": {
+    "equity_ew": {
+      "description": "Equal-weight, 8 US large caps, one per GICS sector, rebalanced daily",
+      "weights": {
+        "AAPL": 0.125,
+        "JPM": 0.125,
+        "XOM": 0.125,
+        "JNJ": 0.125,
+        "PG": 0.125,
+        "AMZN": 0.125,
+        "CAT": 0.125,
+        "NEE": 0.125
+      },
+      "first_return_date": "2019-01-03",
+      "last_return_date": "2026-09-30",
+      "n_returns": 1946,
+      "mean_daily_return": 0.0008278543558319763,
+      "daily_vol": 0.011359722361374006,
+      "validation_counts": {
+        "outlier": 50
+      },
+      "results_rows_written": 18852,
+      "backtest": [
+        {
+          "portfolio": "equity_ew",
+          "method": "hs",
+          "window_days": 250,
+          "alpha": 0.975,
+          "n_obs": 1696,
+          "exceptions": 49,
+          "expected_exceptions": 42.4,
+          "exception_rate": 0.0288915094,
+          "expected_rate": 0.025,
+          "kupiec_lr": 1.0042273579,
+          "kupiec_p": 0.3162897685,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.0314845966,
+          "mean_es_on_exceptions": 0.0291729588,
+          "es_ratio": 1.079239059
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "hs",
+          "window_days": 250,
+          "alpha": 0.99,
+          "n_obs": 1696,
+          "exceptions": 26,
+          "expected_exceptions": 16.96,
+          "exception_rate": 0.0153301887,
+          "expected_rate": 0.01,
+          "kupiec_lr": 4.1851824058,
+          "kupiec_p": 0.0407788242,
+          "reject_5pct": true,
+          "mean_loss_on_exceptions": 0.0377415981,
+          "mean_es_on_exceptions": 0.0328634171,
+          "es_ratio": 1.148438032
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "hs",
+          "window_days": 500,
+          "alpha": 0.975,
+          "n_obs": 1446,
+          "exceptions": 27,
+          "expected_exceptions": 36.15,
+          "exception_rate": 0.0186721992,
+          "expected_rate": 0.025,
+          "kupiec_lr": 2.5998914635,
+          "kupiec_p": 0.1068710337,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.0267076689,
+          "mean_es_on_exceptions": 0.0250821276,
+          "es_ratio": 1.0648087521
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "hs",
+          "window_days": 500,
+          "alpha": 0.99,
+          "n_obs": 1446,
+          "exceptions": 16,
+          "expected_exceptions": 14.46,
+          "exception_rate": 0.0110650069,
+          "expected_rate": 0.01,
+          "kupiec_lr": 0.1601374481,
+          "kupiec_p": 0.6890300032,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.0314324553,
+          "mean_es_on_exceptions": 0.0314440331,
+          "es_ratio": 0.9996317971
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "mc_normal",
+          "window_days": 250,
+          "alpha": 0.975,
+          "n_obs": 1696,
+          "exceptions": 51,
+          "expected_exceptions": 42.4,
+          "exception_rate": 0.0300707547,
+          "expected_rate": 0.025,
+          "kupiec_lr": 1.6818859866,
+          "kupiec_p": 0.1946740377,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.030903746,
+          "mean_es_on_exceptions": 0.0219200626,
+          "es_ratio": 1.4098384023
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "mc_normal",
+          "window_days": 250,
+          "alpha": 0.99,
+          "n_obs": 1696,
+          "exceptions": 33,
+          "expected_exceptions": 16.96,
+          "exception_rate": 0.0194575472,
+          "expected_rate": 0.01,
+          "kupiec_lr": 12.006617111,
+          "kupiec_p": 0.0005301199,
+          "reject_5pct": true,
+          "mean_loss_on_exceptions": 0.0372093369,
+          "mean_es_on_exceptions": 0.0255454506,
+          "es_ratio": 1.4565934804
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "mc_normal",
+          "window_days": 500,
+          "alpha": 0.975,
+          "n_obs": 1446,
+          "exceptions": 29,
+          "expected_exceptions": 36.15,
+          "exception_rate": 0.020055325,
+          "expected_rate": 0.025,
+          "kupiec_lr": 1.5540949262,
+          "kupiec_p": 0.2125319356,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.0268384092,
+          "mean_es_on_exceptions": 0.0217256822,
+          "es_ratio": 1.2353310216
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "mc_normal",
+          "window_days": 500,
+          "alpha": 0.99,
+          "n_obs": 1446,
+          "exceptions": 17,
+          "expected_exceptions": 14.46,
+          "exception_rate": 0.0117565698,
+          "expected_rate": 0.01,
+          "kupiec_lr": 0.4266317519,
+          "kupiec_p": 0.5136463415,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.031976761,
+          "mean_es_on_exceptions": 0.0248616884,
+          "es_ratio": 1.2861862205
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "parametric",
+          "window_days": 250,
+          "alpha": 0.975,
+          "n_obs": 1696,
+          "exceptions": 50,
+          "expected_exceptions": 42.4,
+          "exception_rate": 0.0294811321,
+          "expected_rate": 0.025,
+          "kupiec_lr": 1.3224478053,
+          "kupiec_p": 0.2501532183,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.031212779,
+          "mean_es_on_exceptions": 0.0219285252,
+          "es_ratio": 1.4233870588
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "parametric",
+          "window_days": 250,
+          "alpha": 0.99,
+          "n_obs": 1696,
+          "exceptions": 33,
+          "expected_exceptions": 16.96,
+          "exception_rate": 0.0194575472,
+          "expected_rate": 0.01,
+          "kupiec_lr": 12.006617111,
+          "kupiec_p": 0.0005301199,
+          "reject_5pct": true,
+          "mean_loss_on_exceptions": 0.0372093369,
+          "mean_es_on_exceptions": 0.0254398929,
+          "es_ratio": 1.4626373254
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "parametric",
+          "window_days": 500,
+          "alpha": 0.975,
+          "n_obs": 1446,
+          "exceptions": 29,
+          "expected_exceptions": 36.15,
+          "exception_rate": 0.020055325,
+          "expected_rate": 0.025,
+          "kupiec_lr": 1.5540949262,
+          "kupiec_p": 0.2125319356,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.0268384092,
+          "mean_es_on_exceptions": 0.0216908243,
+          "es_ratio": 1.2373162405
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "parametric",
+          "window_days": 500,
+          "alpha": 0.99,
+          "n_obs": 1446,
+          "exceptions": 17,
+          "expected_exceptions": 14.46,
+          "exception_rate": 0.0117565698,
+          "expected_rate": 0.01,
+          "kupiec_lr": 0.4266317519,
+          "kupiec_p": 0.5136463415,
+          "reject_5pct": false,
+          "mean_loss_on_exceptions": 0.031976761,
+          "mean_es_on_exceptions": 0.0247676656,
+          "es_ratio": 1.2910688254
+        }
+      ],
+      "traffic_light": [
+        {
+          "portfolio": "equity_ew",
+          "method": "hs",
+          "window_days": 250,
+          "n_windows": 1447,
+          "green_share": 0.6703524534,
+          "yellow_share": 0.2944022115,
+          "red_share": 0.0352453352,
+          "max_exceptions_250d": 10,
+          "latest_zone": "green"
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "hs",
+          "window_days": 500,
+          "n_windows": 1197,
+          "green_share": 0.5889724311,
+          "yellow_share": 0.4110275689,
+          "red_share": 0.0,
+          "max_exceptions_250d": 8,
+          "latest_zone": "green"
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "mc_normal",
+          "window_days": 250,
+          "n_windows": 1447,
+          "green_share": 0.6482377332,
+          "yellow_share": 0.1720801659,
+          "red_share": 0.1796821009,
+          "max_exceptions_250d": 15,
+          "latest_zone": "green"
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "mc_normal",
+          "window_days": 500,
+          "n_windows": 1197,
+          "green_share": 0.6290726817,
+          "yellow_share": 0.2305764411,
+          "red_share": 0.1403508772,
+          "max_exceptions_250d": 11,
+          "latest_zone": "green"
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "parametric",
+          "window_days": 250,
+          "n_windows": 1447,
+          "green_share": 0.6482377332,
+          "yellow_share": 0.1720801659,
+          "red_share": 0.1796821009,
+          "max_exceptions_250d": 15,
+          "latest_zone": "green"
+        },
+        {
+          "portfolio": "equity_ew",
+          "method": "parametric",
+          "window_days": 500,
+          "n_windows": 1197,
+          "green_share": 0.6290726817,
+          "yellow_share": 0.2305764411,
+          "red_share": 0.1403508772,
+          "max_exceptions_250d": 11,
+          "latest_zone": "green"
+        }
+      ],
+      "mc_vs_parametric": [
+        {
+          "window_days": 250,
+          "alpha": 0.975,
+          "max_rel_diff_var": 0.008288079132332538,
+          "max_rel_diff_es": 0.0063253060614087975
+        },
+        {
+          "window_days": 250,
+          "alpha": 0.99,
+          "max_rel_diff_var": 0.009846292352492014,
+          "max_rel_diff_es": 0.006669900070372492
+        },
+        {
+          "window_days": 500,
+          "alpha": 0.975,
+          "max_rel_diff_var": 0.005320384077923457,
+          "max_rel_diff_es": 0.005421222263008785
+        },
+        {
+          "window_days": 500,
+          "alpha": 0.99,
+          "max_rel_diff_var": 0.01010432308755993,
+          "max_rel_diff_es": 0.006197995949162705
+        }
+      ],
+      "benchmark": [
+        {
+          "method": "hs",
+          "window_days": 250,
+          "n_forecasts": 1696,
+          "vectorised_s": 0.0028072000022802968,
+          "naive_s": 0.17494669999723556,
+          "speedup": 62.32071097717506,
+          "max_abs_diff": 0.0
+        },
+        {
+          "method": "parametric",
+          "window_days": 250,
+          "n_forecasts": 1696,
+          "vectorised_s": 0.02262979999795789,
+          "naive_s": 0.6062937000024249,
+          "speedup": 26.79182759269356,
+          "max_abs_diff": 2.0816681711721685e-17
+        },
+        {
+          "method": "hs",
+          "window_days": 500,
+          "n_forecasts": 1446,
+          "vectorised_s": 0.005171199998585507,
+          "naive_s": 0.14606819999971776,
+          "speedup": 28.246480515097502,
+          "max_abs_diff": 0.0
+        },
+        {
+          "method": "parametric",
+          "window_days": 500,
+          "n_forecasts": 1446,
+          "vectorised_s": 0.036978000000090105,
+          "naive_s": 0.5111532000009902,
+          "speedup": 13.82317053382402,
+          "max_abs_diff": 2.0816681711721685e-17
+        }
+      ],
+      "charts": [
+        "equity_ew_returns_vs_var.png",
+        "equity_ew_rolling_exceptions.png",
+        "equity_ew_var_method_comparison.png"
+      ]
+    }
+  }
+}

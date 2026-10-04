@@ -71,9 +71,17 @@ def gold(pg_conn):
                        [(t, dates[0].date()) for t in TICKERS])
         cur.execute("SELECT ticker, security_key FROM dim_security")
         key = dict(cur.fetchall())
+        # What the real gold layer contains after an SCD-2 change: a closed key for the
+        # same ticker still holding an older load of every date, at different prices.
+        cur.execute("INSERT INTO dim_security (ticker, effective_from, effective_to, is_current) "
+                    "VALUES (%s, '2018-01-01', '2019-01-02', FALSE) RETURNING security_key", (TICKERS[0],))
+        stale_key = cur.fetchone()[0]
+        execute_values(cur, "INSERT INTO fact_price_daily_consensus VALUES %s", [
+            (stale_key, int(d.strftime("%Y%m%d")), round(float(px[i, 0]) * 0.93, 6), "yfinance", ["yfinance"], None,
+             "single_source") for i, d in enumerate(dates)], page_size=5000)
         missing = (TICKERS[2], dates[700])
         execute_values(cur, "INSERT INTO fact_price_daily_consensus VALUES %s", [
             (key[t], int(d.strftime("%Y%m%d")), round(float(px[i, j]), 6), "yfinance", ["yfinance"], None, "single_source")
             for i, d in enumerate(dates) for j, t in enumerate(TICKERS) if (t, d) != missing], page_size=5000)
     pg_conn.commit()
-    return dict(conn=pg_conn, n_dates=len(dates))
+    return dict(conn=pg_conn, n_dates=len(dates), first_price=round(float(px[0, 0]), 6))
