@@ -1,0 +1,24 @@
+# Every number the run produces is a function of this file + the gold layer.
+data:
+  start_date: 2019-01-01      # marketdata-lakehouse DEFAULT_START_DATE
+  end_date: null              # null = latest available
+  min_history_days: 1250      # ~5y of returns, else fail
+
+validation:
+  max_missing_frac: 0.01      # per-ticker share of trading days with no price -> fail above this
+  max_calendar_gap_days: 5    # longer gap between consecutive trading days = ingestion hole
+  stale_run_days: 3           # this many consecutive unchanged adj_close -> fail
+  outlier_sigma: 5.0          # flagged and logged, never dropped (tail days are the signal)
+
+risk:
+  windows: [250, 500]
+  alphas: [0.99, 0.975]       # headline: VaR at 0.99, ES at 0.975
+  zero_mean: true
+  mc_draws: 100000
+  mc_seed: 20261004
+
+portfolios:
+  equity_ew:
+    description: Equal-weight, 8 US large caps, one per GICS sector, rebalanced daily
+    weights: equal
+    tickers: [AAPL, JPM, XOM, JNJ, PG, AMZN, CAT, NEE]
