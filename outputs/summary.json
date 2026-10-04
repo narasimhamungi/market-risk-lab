@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T00:39:57+00:00",
+  "generated_at": "2026-10-04T01:15:36+00:00",
   "python": "3.14.4",
   "risk_config": {
     "windows": [
@@ -341,36 +341,36 @@
           "method": "hs",
           "window_days": 250,
           "n_forecasts": 1696,
-          "vectorised_s": 0.0028072000022802968,
-          "naive_s": 0.17494669999723556,
-          "speedup": 62.32071097717506,
+          "vectorised_s": 0.003506300003209617,
+          "naive_s": 0.16913689999637427,
+          "speedup": 48.238000125930114,
           "max_abs_diff": 0.0
         },
         {
           "method": "parametric",
           "window_days": 250,
           "n_forecasts": 1696,
-          "vectorised_s": 0.02262979999795789,
-          "naive_s": 0.6062937000024249,
-          "speedup": 26.79182759269356,
+          "vectorised_s": 0.02284450000297511,
+          "naive_s": 0.6295561000006273,
+          "speedup": 27.55832256861119,
           "max_abs_diff": 2.0816681711721685e-17
         },
         {
           "method": "hs",
           "window_days": 500,
           "n_forecasts": 1446,
-          "vectorised_s": 0.005171199998585507,
-          "naive_s": 0.14606819999971776,
-          "speedup": 28.246480515097502,
+          "vectorised_s": 0.005454999998619314,
+          "naive_s": 0.14854559999366757,
+          "speedup": 27.231090748169596,
           "max_abs_diff": 0.0
         },
         {
           "method": "parametric",
           "window_days": 500,
           "n_forecasts": 1446,
-          "vectorised_s": 0.036978000000090105,
-          "naive_s": 0.5111532000009902,
-          "speedup": 13.82317053382402,
+          "vectorised_s": 0.03770339999755379,
+          "naive_s": 0.5066956000009668,
+          "speedup": 13.438989588043556,
           "max_abs_diff": 2.0816681711721685e-17
         }
       ],

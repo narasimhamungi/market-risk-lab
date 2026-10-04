@@ -29,8 +29,9 @@ def returns_vs_var(tbl: pd.DataFrame, path: Path, window: int, alpha: float = 0.
     ax.scatter(ex["date"], ex["realised_pnl"], s=22, color="#c00000", zorder=3, label=f"HS exceptions (n={len(ex)})")
     ax.axhline(0, lw=0.5, color="k")
     ax.set(title=f"{hs['portfolio'].iloc[0]}: daily return vs 1-day {alpha:.0%} VaR, {window}-day window", ylabel="Return")
-    ax.legend(loc="lower left", fontsize=8, ncol=2)
-    fig.tight_layout(); fig.savefig(path, dpi=150); plt.close(fig)
+    # below the axes: inside the plot it sat on top of the largest losses
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.09), fontsize=8, ncol=4, frameon=False)
+    fig.tight_layout(); fig.savefig(path, dpi=150, bbox_inches="tight"); plt.close(fig)
 
 
 def rolling_exceptions_chart(rolling: pd.DataFrame, path: Path) -> None:
